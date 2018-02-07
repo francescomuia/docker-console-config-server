@@ -1,0 +1,34 @@
+# We need to setup different context root for the auth server so that we can store separate
+# cookies for both the API gateway as well as the OAuth2 authorization server.
+keystore: 
+  path: jwt.jks
+  password: docker-console
+  keypair: fmuia
+
+server:
+  port: 8899
+  contextPath: /userauth
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaregistry.docker-console.it:8761/eureka/
+
+security:
+  user:
+    password: password
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+# Datasource and JPA configuration to be used for storing the OAuth authorization details
+# and token store
+spring:
+  data:
+    mongodb:
+      host: docker-console-auth-mongodb
+      username: docker
+      password: console
+      database: dockerconsole
+      port: 27017
