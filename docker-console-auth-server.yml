@@ -30,5 +30,5 @@ spring:
       host: docker-console-auth-mongodb
       username: docker
       password: console
-      database: dockerconsole
+      database: dockerconsoleauth
       port: 27017
